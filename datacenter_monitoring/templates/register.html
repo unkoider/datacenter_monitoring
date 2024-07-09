@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Регистрация</h2>
+    <form method="POST">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="role">Роль:</label>
+        <select id="role" name="role">
+            <option value="user">Пользователь</option>
+            <option value="engineer">Инженер</option>
+            <option value="admin">Администратор</option>
+        </select>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Настройки</h2>
+    <form method="POST">
+        <label for="email_sender">Адрес отправителя:</label>
+        <input type="email" id="email_sender" name="email_sender" value="{{ settings.email_sender }}" required>
+        <label for="email_password">Пароль отправителя:</label>
+        <input type="password" id="email_password" name="email_password" value="{{ settings.email_password }}" required>
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}

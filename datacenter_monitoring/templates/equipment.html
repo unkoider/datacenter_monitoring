@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Оборудование: {{ equipment.name }}</h2>
+    <p>Тип: {{ equipment.type }}</p>
+    <p>Температура: {{ equipment.temperature }} °C</p>
+    <p>Влажность: {{ equipment.humidity }}%</p>
+    <p>Загрузка CPU: {{ equipment.cpu_load }}%</p>
+    <p>Использование RAM: {{ equipment.ram_usage }}%</p>
+    <p>Использование диска: {{ equipment.disk_usage }}%</p>
+{% endblock %}

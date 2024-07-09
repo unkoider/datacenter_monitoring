@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>События</h2>
+    <table id="events-table">
+        <thead>
+            <tr>
+                <th>Тип</th>
+                <th>Сообщение</th>
+                <th>Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.type }}</td>
+                <td>{{ event.message }}</td>
+                <td>{{ event.timestamp | datetime }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

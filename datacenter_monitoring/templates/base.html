@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мониторинг ЦОДа</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plotly.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</head>
+<body>
+    <header>
+        <h1>Мониторинг ЦОДа</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/equipment">Оборудование</a></li>
+                <li><a href="/events">События</a></li>
+                {% if current_user.role == 'admin' %}
+                <li><a href="/user_management">Управление пользователями</a></li>
+                <li><a href="/settings">Настройки</a></li>
+                {% endif %}
+                <li><a href="/logout">Выход</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Мониторинг ЦОДа</p>
+    </footer>
+</body>
+</html>

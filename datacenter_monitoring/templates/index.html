@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Главная</h2>
+    <h3>Оборудование</h3>
+    <table id="equipment-table">
+        <thead>
+            <tr>
+                <th>Тип</th>
+                <th>Название</th>
+                <th>Температура</th>
+                <th>Влажность</th>
+                <th>Загрузка CPU</th>
+                <th>Использование RAM</th>
+                <th>Использование диска</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipment in equipment %}
+            <tr>
+                <td>{{ equipment.type }}</td>
+                <td><a href="/equipment/{{ equipment.id }}">{{ equipment.name }}</a></td>
+                <td>{{ equipment.temperature }} °C</td>
+                <td>{{ equipment.humidity }}%</td>
+                <td>{{ equipment.cpu_load }}%</td>
+                <td>{{ equipment.ram_usage }}%</td>
+                <td>{{ equipment.disk_usage }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Последние события</h3>
+    <table id="events-table">
+        <thead>
+            <tr>
+                <th>Тип</th>
+                <th>Сообщение</th>
+                <th>Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.type }}</td>
+                <td>{{ event.message }}</td>
+                <td>{{ event.timestamp | datetime }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Графики</h3>
+    <div id="temperature-graph"></div>
+    <script>
+        Plotly.newPlot('temperature-graph', {{ temp_graph | safe }});
+    </script>
+    <div id="cpu-graph"></div>
+    <script>
+        Plotly.newPlot('cpu-graph', {{ cpu_graph | safe }});
+    </script>
+{% endblock %}
