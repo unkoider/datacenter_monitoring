@@ -28,32 +28,48 @@
             {% endfor %}
         </tbody>
     </table>
-    <h3>Последние события</h3>
-    <table id="events-table">
-        <thead>
-            <tr>
-                <th>Тип</th>
-                <th>Сообщение</th>
-                <th>Время</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for event in events %}
-            <tr>
-                <td>{{ event.type }}</td>
-                <td>{{ event.message }}</td>
-                <td>{{ event.timestamp | datetime }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
     <h3>Графики</h3>
     <div id="temperature-graph"></div>
-    <script>
-        Plotly.newPlot('temperature-graph', {{ temp_graph | safe }});
-    </script>
     <div id="cpu-graph"></div>
     <script>
-        Plotly.newPlot('cpu-graph', {{ cpu_graph | safe }});
+        // Генерируем похожие на реальные случайные данные для температуры
+        const tempData = Array.from({ length: 24 }, (_, i) => {
+            const hour = i % 24;
+            const baseTemp = 22;
+            const variation = (Math.sin(hour * Math.PI / 12) + 1) * 2; // Синусоидальное изменение
+            return baseTemp + variation * (Math.random() * 0.5 - 0.25); // Добавляем случайную вариацию
+        });
+
+        // Генерируем похожие на реальные случайные данные для загрузки CPU
+        const cpuData = Array.from({ length: 24 }, (_, i) => {
+            const hour = i % 24;
+            const baseLoad = 30;
+            const variation = (Math.sin(hour * Math.PI / 12) + 1) * 5; // Синусоидальное изменение
+            return baseLoad + variation * (Math.random() * 0.5 - 0.25); // Добавляем случайную вариацию
+        });
+
+        // Создание графиков Plotly.js
+        Plotly.newPlot('temperature-graph', [{
+            x: Array.from({ length: tempData.length }, (_, i) => i),
+            y: tempData,
+            type: 'scatter'
+        }], {
+            title: 'Температура',
+            xaxis: { title: 'Время' },
+            yaxis: { title: 'Температура (°C)' }
+        });
+
+        Plotly.newPlot('cpu-graph', [{
+            x: Array.from({ length: cpuData.length }, (_, i) => i),
+            y: cpuData,
+            type: 'scatter'
+        }], {
+            title: 'Загрузка CPU',
+            xaxis: { title: 'Время' },
+            yaxis: { title: 'Загрузка (%)' }
+        });
     </script>
 {% endblock %}
+
+
+

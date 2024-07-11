@@ -1,12 +1,11 @@
 import os
 
-# Xata настройки
-XATA_API_KEY = os.environ.get('XATA_API_KEY')
-XATA_DATABASE_NAME = os.environ.get('XATA_DATABASE_NAME')
+# Postgres настройки
+POSTGRES_DB_URL = f"postgresql://f7mc9j:xau_644tECdUHtb10oWbZBVVA2xpCT6zAwne@eu-central-1.sql.xata.sh:5432/DataCheap:main?sslmode=require"
 
 # Настройки email
-EMAIL_SENDER = 'your_email@example.com'
-EMAIL_PASSWORD = 'your_password'
+EMAIL_SENDER = 'unkoider0@gmail.com'
+EMAIL_PASSWORD = '48FynjY6HothA57'
 
 # Настройки Flask
-SECRET_KEY = 'your_secret_key'
+SECRET_KEY = 'secret_key'

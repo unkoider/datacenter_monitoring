@@ -14,9 +14,10 @@
             <tr>
                 <td>{{ event.type }}</td>
                 <td>{{ event.message }}</td>
-                <td>{{ event.timestamp | datetime }}</td>
+                <td>{{ event.timestamp }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Редактирование пользователя</h2>
+    <form method="POST">
+        <input type="hidden" name="user_id" value="{{ user.id }}">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}" required>
+        <label for="role">Роль:</label>
+        <select id="role" name="role">
+            <option value="user" {% if user.role == 'user' %}selected{% endif %}>Пользователь</option>
+            <option value="engineer" {% if user.role == 'engineer' %}selected{% endif %}>Инженер</option>
+            <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Администратор</option>
+        </select>
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}

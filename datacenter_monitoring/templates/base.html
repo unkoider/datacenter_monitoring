@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/plotly.css') }}">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    
 </head>
 <body>
     <header>
@@ -15,12 +16,12 @@
         <nav>
             <ul>
                 <li><a href="/">Главная</a></li>
-                <li><a href="/equipment">Оборудование</a></li>
+                
                 <li><a href="/events">События</a></li>
-                {% if current_user.role == 'admin' %}
+                
                 <li><a href="/user_management">Управление пользователями</a></li>
                 <li><a href="/settings">Настройки</a></li>
-                {% endif %}
+                
                 <li><a href="/logout">Выход</a></li>
             </ul>
         </nav>
@@ -30,7 +31,7 @@
         {% endblock %}
     </main>
     <footer>
-        <p>&copy; 2023 Мониторинг ЦОДа</p>
+        <p>&copy; 2024 Мониторинг ЦОДа</p>
     </footer>
 </body>
 </html>

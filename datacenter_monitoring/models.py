@@ -16,8 +16,9 @@ class Equipment:
         self.disk_usage = disk_usage
 
 class Event:
-    def __init__(self, id, type, message, timestamp):
+    def __init__(self, id, type, message, timestamp, equipment_id):
         self.id = id
         self.type = type
         self.message = message
         self.timestamp = timestamp
+        self.equipment_id = equipment_id

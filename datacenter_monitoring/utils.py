@@ -2,6 +2,16 @@ import smtplib
 from email.mime.text import MIMEText
 
 def send_email(sender, password, recipient, subject, body):
+    """
+    Отправка email уведомления.
+
+    Args:
+        sender (str): Адрес отправителя.
+        password (str): Пароль отправителя.
+        recipient (str): Адрес получателя.
+        subject (str): Тема письма.
+        body (str): Тело письма.
+    """
     message = MIMEText(body)
     message['Subject'] = subject
     message['From'] = sender
